@@ -34,7 +34,7 @@ import kodlamaio.hrms.entities.concretes.Candidate;
 		
 		@PostMapping("/add")
 		public Result add(@RequestBody Candidate candidate,String passwordAgain) {
-			return candidateService.add(candidate,passwordAgain);
+			return this.candidateService.add(candidate,passwordAgain);
 			
 		}
 	}

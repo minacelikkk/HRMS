@@ -9,6 +9,8 @@ public interface JobTitleDao extends JpaRepository<JobTitle,Integer>{
 	
 	JobTitle getByJobTitle(String JobTitle);
 	
+	JobTitle getById(int Id);
+	
 	
 
 }
