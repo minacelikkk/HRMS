@@ -61,7 +61,7 @@ public class JobAdvertisementManager  implements JobAdvertisementService{
 		@Override
 		public Result setIsActive(int jobAdvertisementId,boolean isActive) {
 			JobAdvertisement jobAdvertisement=this.jobAdvertisementDao.getById(jobAdvertisementId);
-			jobAdvertisement.setActive(isActive);;
+			jobAdvertisement.setActive(isActive);
 			this.jobAdvertisementDao.save(jobAdvertisement);
 			return (isActive==false 
 					? 
