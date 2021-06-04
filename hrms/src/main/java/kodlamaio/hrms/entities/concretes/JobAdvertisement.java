@@ -11,12 +11,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name="job_advertisements")
-
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","employers"})
 public class JobAdvertisement {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,16 +46,20 @@ public class JobAdvertisement {
 	@Column(name="release_date")
 	private LocalDate releaseDate;
 	
-	@ManyToOne
-	@JoinColumn(name="employer_id")
-	private Employer employer;
 	
-	@ManyToOne
-	@JoinColumn(name="city_id")
-	private City city;
 	
 	@ManyToOne
 	@JoinColumn(name="title_id")
 	private JobTitle jobTitle;
 
+	
+	@ManyToOne()
+	@JoinColumn(name = "employer_id")
+	private Employer employer;
+	
+	@ManyToOne()
+	@JoinColumn(name = "city_id")
+	private City city;
+
+	
 }
