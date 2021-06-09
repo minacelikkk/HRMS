@@ -1,7 +1,10 @@
 package kodlamaio.hrms.api.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,8 +25,8 @@ public class PrewritingsController {
 		this.prewritingService = prewritingService;
 	}
 
-	@GetMapping("/add")
-	public Result add(@RequestBody Prewriting prewriting) {
+	@PostMapping("/add")
+	public Result add(@Valid @RequestBody Prewriting prewriting) {
 		return this.prewritingService.add(prewriting);
 		
 	}

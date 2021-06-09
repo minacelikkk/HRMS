@@ -26,7 +26,7 @@ public class JobExperiencesController {
 		super();
 		this.jobExperienceService = jobExperienceService;
 	}
-	@PostMapping(value="/add")
+	@PostMapping("/add")
 	public Result add(@Valid @RequestBody JobExperience jobExperience) {
 		return this.jobExperienceService.add(jobExperience);
 	}

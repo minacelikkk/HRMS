@@ -2,8 +2,12 @@ package kodlamaio.hrms.api.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,8 +26,8 @@ public class SchoolsController {
 		super();
 		this.schoolService = schoolService;
 	}
-	@GetMapping("/add")
-	public Result add(School school) {
+	@PostMapping("/add")
+	public Result add( @Valid @RequestBody School school) {
 		return this.schoolService.add(school);
 		
 	}
