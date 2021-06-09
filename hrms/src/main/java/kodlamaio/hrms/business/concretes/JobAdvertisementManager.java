@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.JobAdvertisementService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
+import kodlamaio.hrms.core.utilities.results.ErrorDataResult;
 import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
@@ -43,13 +44,13 @@ public class JobAdvertisementManager  implements JobAdvertisementService{
 				||jobAdvertisement.getCity()==null||jobAdvertisement.getOpenPositions()==null) {
 			return new ErrorResult("Tum alanlari doldurunuz.");
 		}
-		else if(employerDao.getById(jobAdvertisement.getEmployer().getId())==null) {
+		else if(employerDao.findById(jobAdvertisement.getEmployer().getId())==null) {
 			return new  ErrorResult("Kullanici bulunamadi.");
 		}
-		else if(jobTitleDao.getById(jobAdvertisement.getJobTitle().getId())==null) {
+		else if(jobTitleDao.findById(jobAdvertisement.getJobTitle().getId())==null) {
 			return new  ErrorResult("Is pozisyonu  bulunamadi.");
 		}
-		else if(cityDao.getById(jobAdvertisement.getCity().getId())==null) {
+		else if(cityDao.findById(jobAdvertisement.getCity().getId())==null) {
 			return new  ErrorResult("Sehir  bulunamadi.");
 		}
 		else {
@@ -95,6 +96,17 @@ public class JobAdvertisementManager  implements JobAdvertisementService{
 			return new SuccessDataResult<List<JobAdvertisement>>
 			(this.jobAdvertisementDao.getByIsActiveTrueAndEmployer_CompanyName(companyName, pageable), "Data listelendi");
 		}
+
+		@Override
+		public DataResult<List<JobAdvertisement>> getById(int jobAdvertisementId) {
+			var result = this.jobAdvertisementDao.getById(jobAdvertisementId);
+			if (result != null) {
+				return new SuccessDataResult<List<JobAdvertisement>>("Data listelendi");
+			}
+			return new ErrorDataResult<List<JobAdvertisement>>("Data listelenemedi");
+		}
+
+		
 	}
 	
 

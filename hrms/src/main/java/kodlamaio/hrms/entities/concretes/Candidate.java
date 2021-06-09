@@ -1,12 +1,15 @@
 package kodlamaio.hrms.entities.concretes;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 
+import kodlamaio.hrms.core.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -34,7 +37,42 @@ public class Candidate extends User {
 	private String birthYear;
 	
 	
+	@OneToMany(mappedBy = "candidate")
 	
+	private List<School> schools;
+	
+	@OneToMany(mappedBy = "candidate")
+	
+	private List<JobExperience> jobExperiences;
+	
+	@OneToMany(mappedBy = "candidate")
+	
+	private List<Language> languages;
+	
+	@OneToMany(mappedBy = "candidate")
+	
+	private List<Link> links;
+	
+	@OneToMany(mappedBy = "candidate")
+	
+	private List<ProgrammingSkill> programmingSkills;
+
+	@OneToMany(mappedBy = "candidate")
+	
+	private List<Prewriting> prewritings;
+
+	public Candidate(int id, String email, String password, String firstName, String lastName, String identityNumber,
+			String birthYear) {
+		super(id, email, password);
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.identityNumber = identityNumber;
+		this.birthYear = birthYear;
+	}
+
+
+	
+
 	
 
 }

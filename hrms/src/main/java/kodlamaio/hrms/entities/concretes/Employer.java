@@ -4,12 +4,13 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import kodlamaio.hrms.core.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -39,6 +40,15 @@ public class Employer extends User {
 	
 	@OneToMany(mappedBy= "employer")
 	private List<JobAdvertisement> jobAdvertisement;
+
+	public Employer(int id, String email, String password, int id2, String companyName, String webAddress,
+			String phoneNumber) {
+		super(id, email, password);
+		id = id2;
+		this.companyName = companyName;
+		this.webAddress = webAddress;
+		this.phoneNumber = phoneNumber;
+	}
 	
 	
 

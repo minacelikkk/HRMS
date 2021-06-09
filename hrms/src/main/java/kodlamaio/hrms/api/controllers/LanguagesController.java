@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +20,11 @@ import kodlamaio.hrms.entities.concretes.Language;
 @RequestMapping("/api/languages")
 public class LanguagesController {
 	private LanguageService languageService;
-
+	@Autowired
+	public LanguagesController(LanguageService languageService) {
+		super();
+		this.languageService = languageService;
+	}
 	@PostMapping("/add")
 	public Result add(@Valid @RequestBody Language language) {
 		return this.languageService.add(language);

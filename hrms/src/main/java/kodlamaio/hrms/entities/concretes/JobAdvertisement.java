@@ -4,24 +4,20 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name="job_advertisements")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","employers"})
+
 public class JobAdvertisement {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
 	
@@ -49,7 +45,7 @@ public class JobAdvertisement {
 	
 	
 	@ManyToOne
-	@JoinColumn(name="title_id")
+	@JoinColumn(name="jobTitle_id")
 	private JobTitle jobTitle;
 
 	
@@ -57,9 +53,11 @@ public class JobAdvertisement {
 	@JoinColumn(name = "employer_id")
 	private Employer employer;
 	
-	@ManyToOne()
+	@ManyToOne()	
 	@JoinColumn(name = "city_id")
 	private City city;
+	
+	
 
 	
 }
