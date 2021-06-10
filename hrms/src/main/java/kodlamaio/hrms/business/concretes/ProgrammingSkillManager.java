@@ -3,6 +3,7 @@ package kodlamaio.hrms.business.concretes;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.ProgrammingSkillService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
@@ -15,6 +16,7 @@ import kodlamaio.hrms.dataAccess.abstracts.ProgrammingSkillDao;
 
 import kodlamaio.hrms.entities.concretes.ProgrammingSkill;
 
+@Service
 public class ProgrammingSkillManager implements ProgrammingSkillService {
 	private ProgrammingSkillDao programmingSkillDao;
 	@Autowired

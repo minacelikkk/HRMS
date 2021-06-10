@@ -28,10 +28,10 @@ public class JobAdvertisement {
 	private String openPositions;
 	
 	@Column(name="min_salary")
-	private String minSalary;
+	private int minSalary;
 	
 	@Column(name="max_salary")
-	private String maxSalary;
+	private int maxSalary;
 	
 	@Column(name="application_deadline")
 	private LocalDate applicationDeadline;

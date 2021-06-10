@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.JobExperienceService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
@@ -15,7 +16,7 @@ import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.JobExperienceDao;
 import kodlamaio.hrms.entities.concretes.JobExperience;
 
-
+@Service
 public class JobExperienceManager  implements JobExperienceService{
 	private JobExperienceDao jobExperienceDao;
 

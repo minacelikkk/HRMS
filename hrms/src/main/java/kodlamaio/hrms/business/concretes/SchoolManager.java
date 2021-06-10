@@ -14,7 +14,9 @@ import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.SchoolDao;
 import kodlamaio.hrms.entities.concretes.School;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
+@Service
 public class SchoolManager implements SchoolService {
 	private SchoolDao schoolDao;
 	@Autowired

@@ -3,6 +3,7 @@ package kodlamaio.hrms.business.concretes;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import kodlamaio.hrms.business.abstracts.LinkService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
@@ -15,6 +16,7 @@ import kodlamaio.hrms.dataAccess.abstracts.LinkDao;
 
 import kodlamaio.hrms.entities.concretes.Link;
 
+@Service
 public class LinkManager implements LinkService{
 	private LinkDao linkDao;
 	@Autowired

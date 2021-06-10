@@ -8,6 +8,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import kodlamaio.hrms.core.entities.User;
 import lombok.AllArgsConstructor;
@@ -37,26 +38,32 @@ public class Candidate extends User {
 	private String birthYear;
 	
 	
+	@JsonIgnore()
 	@OneToMany(mappedBy = "candidate")
-	
+
 	private List<School> schools;
 	
+	@JsonIgnore()
 	@OneToMany(mappedBy = "candidate")
 	
 	private List<JobExperience> jobExperiences;
 	
+	@JsonIgnore()
 	@OneToMany(mappedBy = "candidate")
 	
 	private List<Language> languages;
 	
+	@JsonIgnore()
 	@OneToMany(mappedBy = "candidate")
 	
 	private List<Link> links;
 	
+	@JsonIgnore()
 	@OneToMany(mappedBy = "candidate")
 	
 	private List<ProgrammingSkill> programmingSkills;
 
+	@JsonIgnore()
 	@OneToMany(mappedBy = "candidate")
 	
 	private List<Prewriting> prewritings;
