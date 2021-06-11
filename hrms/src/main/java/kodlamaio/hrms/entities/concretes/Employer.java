@@ -10,6 +10,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import kodlamaio.hrms.core.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,6 +25,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper=false)
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobAdvertisement"})
 
 @PrimaryKeyJoinColumn(name="id", referencedColumnName="id")
 public class Employer extends User {
@@ -36,17 +40,11 @@ public class Employer extends User {
 	@Column(name="phone_number")
 	private String phoneNumber;
 	
+	@JsonIgnore()
 	@OneToMany(mappedBy= "employer")
 	private List<JobAdvertisement> jobAdvertisement;
 
-	public Employer(int id, String email, String password, int id2, String companyName, String webAddress,
-			String phoneNumber) {
-		super(id, email, password);
-		id = id2;
-		this.companyName = companyName;
-		this.webAddress = webAddress;
-		this.phoneNumber = phoneNumber;
-	}
+	
 	
 	
 

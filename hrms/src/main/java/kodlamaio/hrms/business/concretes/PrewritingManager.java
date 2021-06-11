@@ -39,6 +39,11 @@ public class PrewritingManager implements PrewritingService{
 		}
 		return new ErrorDataResult<List<Prewriting>>("Data listelenemedi");
 	}
+
+	@Override
+	public DataResult<List<Prewriting>> getAll() {
+		return new SuccessDataResult<List<Prewriting>>(prewritingDao.findAll());
+	}
 	
 
 }

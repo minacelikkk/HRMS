@@ -9,6 +9,7 @@ import kodlamaio.hrms.entities.concretes.Prewriting;
 public interface PrewritingService {
 	Result add(Prewriting prewriting);
 	DataResult<List<Prewriting>> getByCandidateId(int candidateId);
+	DataResult<List<Prewriting>>getAll();
 	
 
 }

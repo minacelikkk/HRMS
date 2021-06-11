@@ -12,6 +12,8 @@ public interface CandidateDao  extends JpaRepository<Candidate, Integer>{
 	
 	Candidate getByIdentityNumber(String identityNumber);
 	
+	Candidate getById(int id);
+	
 	
 
 }

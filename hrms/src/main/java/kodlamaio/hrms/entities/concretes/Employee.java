@@ -23,14 +23,10 @@ import lombok.NoArgsConstructor;
 public class Employee extends User{
 	
 	@Column(name="first_name")
-	private String first_name;
-	@Column(name="last_name")
-	private String last_name;
+	private String firstName;
 	
-	public Employee(int id, String email, String password, String first_name, String last_name) {
-		super(id, email, password);
-		this.first_name = first_name;
-		this.last_name = last_name;
-	}
-
+	@Column(name="last_name")
+	private String lastName;
+	
+	
 }

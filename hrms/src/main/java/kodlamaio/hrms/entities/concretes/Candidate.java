@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -37,45 +38,34 @@ public class Candidate extends User {
 	@Column(name="birth_year")
 	private String birthYear;
 	
-	
-	@JsonIgnore()
 	@OneToMany(mappedBy = "candidate")
-
-	private List<School> schools;
-	
 	@JsonIgnore()
-	@OneToMany(mappedBy = "candidate")
+	private List<School> schoolInfos;
 	
+	@OneToMany(mappedBy = "candidate")
+	@JsonIgnore()
 	private List<JobExperience> jobExperiences;
 	
-	@JsonIgnore()
 	@OneToMany(mappedBy = "candidate")
-	
+	@JsonIgnore()
 	private List<Language> languages;
 	
-	@JsonIgnore()
 	@OneToMany(mappedBy = "candidate")
-	
+	@JsonIgnore()
 	private List<Link> links;
 	
-	@JsonIgnore()
 	@OneToMany(mappedBy = "candidate")
-	
-	private List<ProgrammingSkill> programmingSkills;
+	@JsonIgnore()
+	private List<ProgrammingSkill> skills;
 
-	@JsonIgnore()
 	@OneToMany(mappedBy = "candidate")
-	
+	@JsonIgnore()
 	private List<Prewriting> prewritings;
-
-	public Candidate(int id, String email, String password, String firstName, String lastName, String identityNumber,
-			String birthYear) {
-		super(id, email, password);
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.identityNumber = identityNumber;
-		this.birthYear = birthYear;
-	}
+	
+	@OneToOne(mappedBy = "candidate")
+	@JsonIgnore()
+	private CandidateImage candidateImage;
+	
 
 
 	
