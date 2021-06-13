@@ -39,21 +39,21 @@ public class CandidateImageManager  implements CandidateImageService{
 	}
 
 	@Override
-	public Result add(MultipartFile file, CandidateImage candidateImage) {
-		Map<String,String> uploadImage = this.imageUploadService.uploadImageFile(file).getData();
+	public Result add(MultipartFile imageFile, CandidateImage candidateImage) {
+		Map<String,String> uploadImage = this.imageUploadService.uploadImageFile(imageFile).getData();
 		candidateImage.setImageUrl(uploadImage.get("url"));
 		this.candidateImageDao.save(candidateImage);
-		return new SuccessResult("Image has been added.");
+		return new SuccessResult("Resim eklendi.");
 	}
 
 	@Override
 	public DataResult<CandidateImage> getById(int id) {
-		return new SuccessDataResult<CandidateImage>(candidateImageDao.getByCandidateImage_Id(id));
+		return new SuccessDataResult<CandidateImage>(candidateImageDao.getById(id));
 	}
 
 	@Override
 	public DataResult<CandidateImage> getByCandidateId(int candidateId) {
-		return new SuccessDataResult<CandidateImage>(candidateImageDao.getByCandidateId(candidateId));
+		return new SuccessDataResult<CandidateImage>(candidateImageDao.getByCandidate_Id(candidateId));
 	}
 
 	@Override

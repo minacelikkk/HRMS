@@ -12,7 +12,7 @@ import kodlamaio.hrms.entities.concretes.CandidateImage;
 public interface CandidateImageService {
 	
 	DataResult<List<CandidateImage>>getAll();
-	Result add(MultipartFile file, CandidateImage candidateImage);
+	Result add(MultipartFile imageFile, CandidateImage candidateImage);
 	DataResult<CandidateImage> getById(int id);
 	DataResult<CandidateImage> getByCandidateId(int candidateId);
 	Result delete(CandidateImage candidateImage);
