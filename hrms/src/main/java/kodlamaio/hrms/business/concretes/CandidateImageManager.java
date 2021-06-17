@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import kodlamaio.hrms.business.abstracts.CandidateImageService;
-import kodlamaio.hrms.core.utilities.imageUpload.ImageUploadService;
+import kodlamaio.hrms.core.adapters.abstracts.CloudinaryService;
+
 import kodlamaio.hrms.core.utilities.results.DataResult;
 
 import kodlamaio.hrms.core.utilities.results.Result;
@@ -23,13 +24,13 @@ import kodlamaio.hrms.entities.concretes.CandidateImage;
 public class CandidateImageManager  implements CandidateImageService{
 
 	private CandidateImageDao candidateImageDao;
-	private ImageUploadService imageUploadService;
+	private CloudinaryService cloudinaryService;
 	
 	@Autowired
-	public CandidateImageManager(CandidateImageDao candidateImageDao, ImageUploadService imageUploadService) {
+	public CandidateImageManager(CandidateImageDao candidateImageDao, CloudinaryService cloudinaryService) {
 		super();
 		this.candidateImageDao = candidateImageDao;
-		this.imageUploadService = imageUploadService;
+		this.cloudinaryService = cloudinaryService;
 	}
 
 	@Override
@@ -40,7 +41,8 @@ public class CandidateImageManager  implements CandidateImageService{
 
 	@Override
 	public Result add(MultipartFile imageFile, CandidateImage candidateImage) {
-		Map<String,String> uploadImage = this.imageUploadService.uploadImageFile(imageFile).getData();
+		@SuppressWarnings("unchecked")
+		Map<String,String> uploadImage = this.cloudinaryService.uploadImageFile(imageFile).getData();
 		candidateImage.setImageUrl(uploadImage.get("url"));
 		this.candidateImageDao.save(candidateImage);
 		return new SuccessResult("Resim eklendi.");
