@@ -35,7 +35,7 @@ public class CandidateImageManager  implements CandidateImageService{
 
 	@Override
 	public DataResult<List<CandidateImage>> getAll() {
-		// TODO Auto-generated method stub
+		
 		return new SuccessDataResult<List<CandidateImage>>(candidateImageDao.findAll());
 	}
 
